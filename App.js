@@ -12,7 +12,6 @@ export default function App() {
 
   const addGoalHandler = () => {
     setCourseGoals([...courseGoals, enteredGoal]);
-    console.log(courseGoals);
   };
 
   return (
@@ -29,7 +28,13 @@ export default function App() {
         <Button title="ADD" onPress={addGoalHandler} />
       </View>
 
-      <View></View>
+      <View>
+        {courseGoals.map((goal) => (
+          <View key={goal} style={styles.list}>
+            <Text >{goal}</Text>
+          </View>
+        ))}
+      </View>
 
       <StatusBar style="auto" />
     </View>
@@ -49,6 +54,14 @@ const styles = StyleSheet.create({
     width: "80%",
     borderBottomColor: "black",
     borderBottomWidth: 1,
+    // borderWidth: 1,
     padding: 10,
+  },
+  list: {
+    padding: 10,
+    marginVertical:5,
+    backgroundColor: "#ccc",
+    borderColor: "black",
+    borderWidth: 1,
   },
 });
